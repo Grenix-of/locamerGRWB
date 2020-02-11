@@ -205,6 +205,7 @@
     <Compile Include="Controllers\EmplacementsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\OptionsController.cs" />
     <Compile Include="Controllers\SejoursController.cs" />
     <Compile Include="Controllers\TypesController.cs" />
     <Compile Include="Emplacement.cs">
@@ -349,6 +350,11 @@
     <Content Include="Views\Sejours\Details.cshtml" />
     <Content Include="Views\Sejours\Edit.cshtml" />
     <Content Include="Views\Sejours\Index.cshtml" />
+    <Content Include="Views\Options\Create.cshtml" />
+    <Content Include="Views\Options\Delete.cshtml" />
+    <Content Include="Views\Options\Details.cshtml" />
+    <Content Include="Views\Options\Edit.cshtml" />
+    <Content Include="Views\Options\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
