@@ -1,0 +1,552 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="LocamerGRuModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="idCli" />
+          </Key>
+          <Property Name="idCli" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nomCli" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="prenomCli" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="telephone" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Emplacement">
+          <Key>
+            <PropertyRef Name="codeEmplacement" />
+          </Key>
+          <Property Name="codeEmplacement" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="capaciteMob" Type="float" Nullable="false" />
+          <Property Name="terrasseCouv" Type="bit" Nullable="false" />
+          <Property Name="idTarif" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EmplacementSejour">
+          <Key>
+            <PropertyRef Name="idES" />
+          </Key>
+          <Property Name="idES" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codeEmplacement" Type="int" Nullable="false" />
+          <Property Name="idSejour" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="locationOption">
+          <Key>
+            <PropertyRef Name="idLoc" />
+          </Key>
+          <Property Name="idLoc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="quantitee" Type="float" Nullable="false" />
+          <Property Name="duree" Type="float" Nullable="false" />
+          <Property Name="idOption" Type="int" Nullable="false" />
+          <Property Name="idSejour" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Option">
+          <Key>
+            <PropertyRef Name="idOption" />
+          </Key>
+          <Property Name="idOption" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="libelle" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="prixJour" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sejour">
+          <Key>
+            <PropertyRef Name="idSejour" />
+          </Key>
+          <Property Name="idSejour" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dateDebut" Type="date" Nullable="false" />
+          <Property Name="dateFin" Type="date" Nullable="false" />
+          <Property Name="codeEmplacement" Type="int" Nullable="false" />
+          <Property Name="idCli" Type="int" Nullable="false" />
+          <Property Name="idReduc" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tarif">
+          <Key>
+            <PropertyRef Name="idTarif" />
+          </Key>
+          <Property Name="idTarif" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="libelle" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="prix" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Type">
+          <Key>
+            <PropertyRef Name="idReduc" />
+          </Key>
+          <Property Name="idReduc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="libelle" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="coefReduc" Type="float" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Emplaceme__codeE__35BCFE0A">
+          <End Role="Emplacement" Type="Self.Emplacement" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EmplacementSejour" Type="Self.EmplacementSejour" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Emplacement">
+              <PropertyRef Name="codeEmplacement" />
+            </Principal>
+            <Dependent Role="EmplacementSejour">
+              <PropertyRef Name="codeEmplacement" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Emplaceme__idSej__37A5467C">
+          <End Role="Sejour" Type="Self.Sejour" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EmplacementSejour" Type="Self.EmplacementSejour" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sejour">
+              <PropertyRef Name="idSejour" />
+            </Principal>
+            <Dependent Role="EmplacementSejour">
+              <PropertyRef Name="idSejour" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Client_dbo_client_idCli">
+          <End Role="Client" Type="Self.Client" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Sejour" Type="Self.Sejour" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="idCli" />
+            </Principal>
+            <Dependent Role="Sejour">
+              <PropertyRef Name="idCli" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Emplacement_dbo_Tarif_idTarif">
+          <End Role="Tarif" Type="Self.Tarif" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Emplacement" Type="Self.Emplacement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tarif">
+              <PropertyRef Name="idTarif" />
+            </Principal>
+            <Dependent Role="Emplacement">
+              <PropertyRef Name="idTarif" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_locationOption_dbo_OPTION_idOption">
+          <End Role="Option" Type="Self.Option" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="locationOption" Type="Self.locationOption" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Option">
+              <PropertyRef Name="idOption" />
+            </Principal>
+            <Dependent Role="locationOption">
+              <PropertyRef Name="idOption" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Sejour_dbo_Sejour_idSejour">
+          <End Role="Sejour" Type="Self.Sejour" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="locationOption" Type="Self.locationOption" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sejour">
+              <PropertyRef Name="idSejour" />
+            </Principal>
+            <Dependent Role="locationOption">
+              <PropertyRef Name="idSejour" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Type_dbo_Type_idReduc">
+          <End Role="Type" Type="Self.Type" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Sejour" Type="Self.Sejour" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type">
+              <PropertyRef Name="idReduc" />
+            </Principal>
+            <Dependent Role="Sejour">
+              <PropertyRef Name="idReduc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LocamerGRuModelStoreContainer">
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Emplacement" EntityType="Self.Emplacement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmplacementSejour" EntityType="Self.EmplacementSejour" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="locationOption" EntityType="Self.locationOption" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Option" EntityType="Self.Option" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sejour" EntityType="Self.Sejour" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tarif" EntityType="Self.Tarif" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Type" EntityType="Self.Type" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Emplaceme__codeE__35BCFE0A" Association="Self.FK__Emplaceme__codeE__35BCFE0A">
+            <End Role="Emplacement" EntitySet="Emplacement" />
+            <End Role="EmplacementSejour" EntitySet="EmplacementSejour" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Emplaceme__idSej__37A5467C" Association="Self.FK__Emplaceme__idSej__37A5467C">
+            <End Role="Sejour" EntitySet="Sejour" />
+            <End Role="EmplacementSejour" EntitySet="EmplacementSejour" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Client_dbo_client_idCli" Association="Self.FK_dbo_Client_dbo_client_idCli">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Sejour" EntitySet="Sejour" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Emplacement_dbo_Tarif_idTarif" Association="Self.FK_dbo_Emplacement_dbo_Tarif_idTarif">
+            <End Role="Tarif" EntitySet="Tarif" />
+            <End Role="Emplacement" EntitySet="Emplacement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_locationOption_dbo_OPTION_idOption" Association="Self.FK_dbo_locationOption_dbo_OPTION_idOption">
+            <End Role="Option" EntitySet="Option" />
+            <End Role="locationOption" EntitySet="locationOption" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Sejour_dbo_Sejour_idSejour" Association="Self.FK_dbo_Sejour_dbo_Sejour_idSejour">
+            <End Role="Sejour" EntitySet="Sejour" />
+            <End Role="locationOption" EntitySet="locationOption" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Type_dbo_Type_idReduc" Association="Self.FK_dbo_Type_dbo_Type_idReduc">
+            <End Role="Type" EntitySet="Type" />
+            <End Role="Sejour" EntitySet="Sejour" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LocamerGRuModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="idCli" />
+          </Key>
+          <Property Name="idCli" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nomCli" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="prenomCli" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="telephone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Sejour" Relationship="Self.FK_dbo_Client_dbo_client_idCli" FromRole="Client" ToRole="Sejour" />
+        </EntityType>
+        <EntityType Name="Emplacement">
+          <Key>
+            <PropertyRef Name="codeEmplacement" />
+          </Key>
+          <Property Name="codeEmplacement" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="capaciteMob" Type="Double" Nullable="false" />
+          <Property Name="terrasseCouv" Type="Boolean" Nullable="false" />
+          <Property Name="idTarif" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EmplacementSejour" Relationship="Self.FK__Emplaceme__codeE__35BCFE0A" FromRole="Emplacement" ToRole="EmplacementSejour" />
+          <NavigationProperty Name="Tarif" Relationship="Self.FK_dbo_Emplacement_dbo_Tarif_idTarif" FromRole="Emplacement" ToRole="Tarif" />
+        </EntityType>
+        <EntityType Name="EmplacementSejour">
+          <Key>
+            <PropertyRef Name="idES" />
+          </Key>
+          <Property Name="idES" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codeEmplacement" Type="Int32" Nullable="false" />
+          <Property Name="idSejour" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Emplacement" Relationship="Self.FK__Emplaceme__codeE__35BCFE0A" FromRole="EmplacementSejour" ToRole="Emplacement" />
+          <NavigationProperty Name="Sejour" Relationship="Self.FK__Emplaceme__idSej__37A5467C" FromRole="EmplacementSejour" ToRole="Sejour" />
+        </EntityType>
+        <EntityType Name="locationOption">
+          <Key>
+            <PropertyRef Name="idLoc" />
+          </Key>
+          <Property Name="idLoc" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="quantitee" Type="Double" Nullable="false" />
+          <Property Name="duree" Type="Double" Nullable="false" />
+          <Property Name="idOption" Type="Int32" Nullable="false" />
+          <Property Name="idSejour" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Option" Relationship="Self.FK_dbo_locationOption_dbo_OPTION_idOption" FromRole="locationOption" ToRole="Option" />
+          <NavigationProperty Name="Sejour" Relationship="Self.FK_dbo_Sejour_dbo_Sejour_idSejour" FromRole="locationOption" ToRole="Sejour" />
+        </EntityType>
+        <EntityType Name="Option">
+          <Key>
+            <PropertyRef Name="idOption" />
+          </Key>
+          <Property Name="idOption" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="libelle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="prixJour" Type="Double" Nullable="false" />
+          <NavigationProperty Name="locationOption" Relationship="Self.FK_dbo_locationOption_dbo_OPTION_idOption" FromRole="Option" ToRole="locationOption" />
+        </EntityType>
+        <EntityType Name="Sejour">
+          <Key>
+            <PropertyRef Name="idSejour" />
+          </Key>
+          <Property Name="idSejour" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dateDebut" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="dateFin" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="codeEmplacement" Type="Int32" Nullable="false" />
+          <Property Name="idCli" Type="Int32" Nullable="false" />
+          <Property Name="idReduc" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Client" Relationship="Self.FK_dbo_Client_dbo_client_idCli" FromRole="Sejour" ToRole="Client" />
+          <NavigationProperty Name="EmplacementSejour" Relationship="Self.FK__Emplaceme__idSej__37A5467C" FromRole="Sejour" ToRole="EmplacementSejour" />
+          <NavigationProperty Name="locationOption" Relationship="Self.FK_dbo_Sejour_dbo_Sejour_idSejour" FromRole="Sejour" ToRole="locationOption" />
+          <NavigationProperty Name="Type" Relationship="Self.FK_dbo_Type_dbo_Type_idReduc" FromRole="Sejour" ToRole="Type" />
+        </EntityType>
+        <EntityType Name="Tarif">
+          <Key>
+            <PropertyRef Name="idTarif" />
+          </Key>
+          <Property Name="idTarif" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="libelle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="prix" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Emplacement" Relationship="Self.FK_dbo_Emplacement_dbo_Tarif_idTarif" FromRole="Tarif" ToRole="Emplacement" />
+        </EntityType>
+        <EntityType Name="Type">
+          <Key>
+            <PropertyRef Name="idReduc" />
+          </Key>
+          <Property Name="idReduc" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="libelle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="coefReduc" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Sejour" Relationship="Self.FK_dbo_Type_dbo_Type_idReduc" FromRole="Type" ToRole="Sejour" />
+        </EntityType>
+        <Association Name="FK_dbo_Client_dbo_client_idCli">
+          <End Role="Client" Type="Self.Client" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Sejour" Type="Self.Sejour" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="idCli" />
+            </Principal>
+            <Dependent Role="Sejour">
+              <PropertyRef Name="idCli" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Emplaceme__codeE__35BCFE0A">
+          <End Role="Emplacement" Type="Self.Emplacement" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EmplacementSejour" Type="Self.EmplacementSejour" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Emplacement">
+              <PropertyRef Name="codeEmplacement" />
+            </Principal>
+            <Dependent Role="EmplacementSejour">
+              <PropertyRef Name="codeEmplacement" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Emplacement_dbo_Tarif_idTarif">
+          <End Role="Tarif" Type="Self.Tarif" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Emplacement" Type="Self.Emplacement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tarif">
+              <PropertyRef Name="idTarif" />
+            </Principal>
+            <Dependent Role="Emplacement">
+              <PropertyRef Name="idTarif" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Emplaceme__idSej__37A5467C">
+          <End Role="Sejour" Type="Self.Sejour" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EmplacementSejour" Type="Self.EmplacementSejour" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sejour">
+              <PropertyRef Name="idSejour" />
+            </Principal>
+            <Dependent Role="EmplacementSejour">
+              <PropertyRef Name="idSejour" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_locationOption_dbo_OPTION_idOption">
+          <End Role="Option" Type="Self.Option" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="locationOption" Type="Self.locationOption" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Option">
+              <PropertyRef Name="idOption" />
+            </Principal>
+            <Dependent Role="locationOption">
+              <PropertyRef Name="idOption" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Sejour_dbo_Sejour_idSejour">
+          <End Role="Sejour" Type="Self.Sejour" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="locationOption" Type="Self.locationOption" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sejour">
+              <PropertyRef Name="idSejour" />
+            </Principal>
+            <Dependent Role="locationOption">
+              <PropertyRef Name="idSejour" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Type_dbo_Type_idReduc">
+          <End Role="Type" Type="Self.Type" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Sejour" Type="Self.Sejour" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type">
+              <PropertyRef Name="idReduc" />
+            </Principal>
+            <Dependent Role="Sejour">
+              <PropertyRef Name="idReduc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LocamerGRuEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Client" EntityType="Self.Client" />
+          <EntitySet Name="Emplacement" EntityType="Self.Emplacement" />
+          <EntitySet Name="EmplacementSejour" EntityType="Self.EmplacementSejour" />
+          <EntitySet Name="locationOption" EntityType="Self.locationOption" />
+          <EntitySet Name="Option" EntityType="Self.Option" />
+          <EntitySet Name="Sejour" EntityType="Self.Sejour" />
+          <EntitySet Name="Tarif" EntityType="Self.Tarif" />
+          <EntitySet Name="Type" EntityType="Self.Type" />
+          <AssociationSet Name="FK_dbo_Client_dbo_client_idCli" Association="Self.FK_dbo_Client_dbo_client_idCli">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Sejour" EntitySet="Sejour" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Emplaceme__codeE__35BCFE0A" Association="Self.FK__Emplaceme__codeE__35BCFE0A">
+            <End Role="Emplacement" EntitySet="Emplacement" />
+            <End Role="EmplacementSejour" EntitySet="EmplacementSejour" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Emplacement_dbo_Tarif_idTarif" Association="Self.FK_dbo_Emplacement_dbo_Tarif_idTarif">
+            <End Role="Tarif" EntitySet="Tarif" />
+            <End Role="Emplacement" EntitySet="Emplacement" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Emplaceme__idSej__37A5467C" Association="Self.FK__Emplaceme__idSej__37A5467C">
+            <End Role="Sejour" EntitySet="Sejour" />
+            <End Role="EmplacementSejour" EntitySet="EmplacementSejour" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_locationOption_dbo_OPTION_idOption" Association="Self.FK_dbo_locationOption_dbo_OPTION_idOption">
+            <End Role="Option" EntitySet="Option" />
+            <End Role="locationOption" EntitySet="locationOption" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Sejour_dbo_Sejour_idSejour" Association="Self.FK_dbo_Sejour_dbo_Sejour_idSejour">
+            <End Role="Sejour" EntitySet="Sejour" />
+            <End Role="locationOption" EntitySet="locationOption" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Type_dbo_Type_idReduc" Association="Self.FK_dbo_Type_dbo_Type_idReduc">
+            <End Role="Type" EntitySet="Type" />
+            <End Role="Sejour" EntitySet="Sejour" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LocamerGRuModelStoreContainer" CdmEntityContainer="LocamerGRuEntities">
+          <EntitySetMapping Name="Client">
+            <EntityTypeMapping TypeName="LocamerGRuModel.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="idCli" ColumnName="idCli" />
+                <ScalarProperty Name="nomCli" ColumnName="nomCli" />
+                <ScalarProperty Name="prenomCli" ColumnName="prenomCli" />
+                <ScalarProperty Name="telephone" ColumnName="telephone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Emplacement">
+            <EntityTypeMapping TypeName="LocamerGRuModel.Emplacement">
+              <MappingFragment StoreEntitySet="Emplacement">
+                <ScalarProperty Name="codeEmplacement" ColumnName="codeEmplacement" />
+                <ScalarProperty Name="capaciteMob" ColumnName="capaciteMob" />
+                <ScalarProperty Name="terrasseCouv" ColumnName="terrasseCouv" />
+                <ScalarProperty Name="idTarif" ColumnName="idTarif" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmplacementSejour">
+            <EntityTypeMapping TypeName="LocamerGRuModel.EmplacementSejour">
+              <MappingFragment StoreEntitySet="EmplacementSejour">
+                <ScalarProperty Name="idES" ColumnName="idES" />
+                <ScalarProperty Name="codeEmplacement" ColumnName="codeEmplacement" />
+                <ScalarProperty Name="idSejour" ColumnName="idSejour" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="locationOption">
+            <EntityTypeMapping TypeName="LocamerGRuModel.locationOption">
+              <MappingFragment StoreEntitySet="locationOption">
+                <ScalarProperty Name="idLoc" ColumnName="idLoc" />
+                <ScalarProperty Name="quantitee" ColumnName="quantitee" />
+                <ScalarProperty Name="duree" ColumnName="duree" />
+                <ScalarProperty Name="idOption" ColumnName="idOption" />
+                <ScalarProperty Name="idSejour" ColumnName="idSejour" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Option">
+            <EntityTypeMapping TypeName="LocamerGRuModel.Option">
+              <MappingFragment StoreEntitySet="Option">
+                <ScalarProperty Name="idOption" ColumnName="idOption" />
+                <ScalarProperty Name="libelle" ColumnName="libelle" />
+                <ScalarProperty Name="prixJour" ColumnName="prixJour" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sejour">
+            <EntityTypeMapping TypeName="LocamerGRuModel.Sejour">
+              <MappingFragment StoreEntitySet="Sejour">
+                <ScalarProperty Name="idSejour" ColumnName="idSejour" />
+                <ScalarProperty Name="dateDebut" ColumnName="dateDebut" />
+                <ScalarProperty Name="dateFin" ColumnName="dateFin" />
+                <ScalarProperty Name="codeEmplacement" ColumnName="codeEmplacement" />
+                <ScalarProperty Name="idCli" ColumnName="idCli" />
+                <ScalarProperty Name="idReduc" ColumnName="idReduc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tarif">
+            <EntityTypeMapping TypeName="LocamerGRuModel.Tarif">
+              <MappingFragment StoreEntitySet="Tarif">
+                <ScalarProperty Name="idTarif" ColumnName="idTarif" />
+                <ScalarProperty Name="libelle" ColumnName="libelle" />
+                <ScalarProperty Name="prix" ColumnName="prix" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Type">
+            <EntityTypeMapping TypeName="LocamerGRuModel.Type">
+              <MappingFragment StoreEntitySet="Type">
+                <ScalarProperty Name="idReduc" ColumnName="idReduc" />
+                <ScalarProperty Name="libelle" ColumnName="libelle" />
+                <ScalarProperty Name="coefReduc" ColumnName="coefReduc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

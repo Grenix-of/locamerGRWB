@@ -7,14 +7,14 @@
     <Name>locamerGRu</Name>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
-    <ProjectGuid>{c9fee1f9-e1c9-4fd9-91b5-f703567d5b0f}</ProjectGuid>
+    <ProjectGuid>{35c59645-8f7d-45b7-b75a-556483556ee6}</ProjectGuid>
     <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
     <RootNamespace>locamerGRu</RootNamespace>
     <AssemblyName>locamerGRu</AssemblyName>
-    <ModelCollation>1033, CI</ModelCollation>
+    <ModelCollation>1036,CI</ModelCollation>
     <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
     <DeployToDatabase>True</DeployToDatabase>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
@@ -23,6 +23,8 @@
     <SqlServerVerification>False</SqlServerVerification>
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
     <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>French_CI_AS</DefaultCollation>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -57,5 +59,17 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\Tarif.sql" />
+    <Build Include="dbo\Tables\Type.sql" />
+    <Build Include="dbo\Tables\Client.sql" />
+    <Build Include="dbo\Tables\Option.sql" />
+    <Build Include="dbo\Tables\Emplacement.sql" />
+    <Build Include="dbo\Tables\Sejour.sql" />
+    <Build Include="dbo\Tables\locationOption.sql" />
+    <Build Include="dbo\Tables\EmplacementSejour.sql" />
   </ItemGroup>
 </Project>

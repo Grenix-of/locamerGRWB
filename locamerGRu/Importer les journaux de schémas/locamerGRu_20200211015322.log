@@ -1,0 +1,76 @@
+11/02/2020 14:53:22	Ce journal contient des informations sur l'importation du schéma dans le projet 'locamerGRu' sur l'ordinateur 'R21012' par l'utilisateur 'ruffier.gaetan'.
+11/02/2020 14:53:22	L'importation du schéma de base de données a commencé.
+11/02/2020 14:53:27	Collecte des options de la base de données
+11/02/2020 14:53:27	Collecte des utilisateurs
+11/02/2020 14:53:27	Collecte des rôles
+11/02/2020 14:53:27	Collecte des rôles d'application
+11/02/2020 14:53:27	Collecte des appartenances aux rôles
+11/02/2020 14:53:27	Collecte des groupes de fichiers
+11/02/2020 14:53:27	Collecte des catalogues de recherche en texte intégral
+11/02/2020 14:53:27	Collecte des assemblys
+11/02/2020 14:53:27	Collecte des certificats
+11/02/2020 14:53:27	Collecte des clés asymétriques
+11/02/2020 14:53:27	Collecte des clés symétriques
+11/02/2020 14:53:27	Collecte des clés symétriques chiffrées
+11/02/2020 14:53:27	Collecte des schémas
+11/02/2020 14:53:27	Collecte des collections de schémas XML
+11/02/2020 14:53:27	Collecte des types de données définis par l'utilisateur
+11/02/2020 14:53:27	Collecte des types définis par l'utilisateur
+11/02/2020 14:53:27	Collecte des types de tables
+11/02/2020 14:53:27	Collecte des clés uniques des types de tables
+11/02/2020 14:53:27	Collecte des clés primaires pour les types de tables
+11/02/2020 14:53:27	Collecte des contraintes de validation pour les types de tables
+11/02/2020 14:53:27	Collecte des contraintes par défaut pour les types de tables
+11/02/2020 14:53:27	Collecte des fonctions de partition
+11/02/2020 14:53:27	Collecte des schémas de partition
+11/02/2020 14:53:27	Collecte des fonctions
+11/02/2020 14:53:27	Collecte de fonctions cryptées
+11/02/2020 14:53:27	Collecte des agrégats
+11/02/2020 14:53:27	Collecte des procédures
+11/02/2020 14:53:27	Collecte de procédures cryptées
+11/02/2020 14:53:27	Collecte des tables
+11/02/2020 14:53:27	Collecte des clés primaires
+11/02/2020 14:53:27	Collecte des contraintes uniques
+11/02/2020 14:53:27	Collecte des clés étrangères
+11/02/2020 14:53:27	Collecte des contraintes par défaut
+11/02/2020 14:53:27	Collecte des contraintes de validation
+11/02/2020 14:53:27	Collecte des vues
+11/02/2020 14:53:27	Collecte de vues cryptées
+11/02/2020 14:53:27	Collecte des index
+11/02/2020 14:53:27	Collecte des statistiques
+11/02/2020 14:53:27	Collecte des listes de mots vides d'index de recherche en texte intégral
+11/02/2020 14:53:27	Collecte des listes de propriétés de recherche
+11/02/2020 14:53:27	Collecte des propriétés de recherche
+11/02/2020 14:53:27	Collecte des index de recherche en texte intégral
+11/02/2020 14:53:27	Collecte des index de la banque de colonnes
+11/02/2020 14:53:27	Collecte des index spatiaux
+11/02/2020 14:53:27	Collecte des index XML
+11/02/2020 14:53:27	Collecte d'index XML sélectifs
+11/02/2020 14:53:27	Collecte de déclencheurs cryptés
+11/02/2020 14:53:27	Collecte des déclencheurs
+11/02/2020 14:53:27	Collecte des déclencheurs chiffrés et DDL CLR
+11/02/2020 14:53:27	Collecte des DDL triggers
+11/02/2020 14:53:27	Collecte des synonymes
+11/02/2020 14:53:27	Collecte des valeurs par défaut
+11/02/2020 14:53:27	Collecte des liaisons UDDT de contrainte de données
+11/02/2020 14:53:27	Collecte des règles
+11/02/2020 14:53:27	Collecte des liaisons UDDT de contrainte de données
+11/02/2020 14:53:27	Collecte des types de messages
+11/02/2020 14:53:27	Collecte des files d'attente
+11/02/2020 14:53:27	Collecte des contrats
+11/02/2020 14:53:27	Collecte des services
+11/02/2020 14:53:27	Collecte des notifications d'événements
+11/02/2020 14:53:27	Collecte des liaisons de service distant
+11/02/2020 14:53:27	Collecte des priorités de Service Broker
+11/02/2020 14:53:27	Collecte des signatures
+11/02/2020 14:53:27	Collection des options de compression de données
+11/02/2020 14:53:27	Collecte des types de séquences
+11/02/2020 14:53:27	Collection des propriétés étendues
+11/02/2020 14:53:27	Collecte des informations d'identification
+11/02/2020 14:53:27	Collecte des connexions
+11/02/2020 14:53:27	Collecte des audits du serveur
+11/02/2020 14:53:28	Analyse du projet à la recherche des éléments en double
+11/02/2020 14:53:28	Fin du traitement des éléments en double
+11/02/2020 14:53:28	Importation de la base de données terminée.
+11/02/2020 14:53:28	Un résumé de l'opération d'importation a été enregistré à l'emplacement suivant : F:\Cours\PPE2\locamerGRu\locamerGRu\Importer les journaux de schémas\locamerGRu_20200211015322.log.
+11/02/2020 14:53:28	Cliquez sur Terminer pour continuer...
