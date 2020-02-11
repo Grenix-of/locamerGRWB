@@ -1,0 +1,58 @@
+﻿@model locamerguu.Sejour
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Sejour</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.dateDebut)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dateDebut)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dateFin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dateFin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.codeEmplacement)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.codeEmplacement)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Client.nomCli)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Client.nomCli)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Type.libelle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Type.libelle)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idSejour }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

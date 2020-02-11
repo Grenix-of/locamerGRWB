@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LocamerGRuModelStoreContainer" CdmEntityContainer="LocamerGRuEntities">
+    <EntitySetMapping Name="Client">
+      <EntityTypeMapping TypeName="LocamerGRuModel.Client">
+        <MappingFragment StoreEntitySet="Client">
+          <ScalarProperty Name="idCli" ColumnName="idCli" />
+          <ScalarProperty Name="nomCli" ColumnName="nomCli" />
+          <ScalarProperty Name="prenomCli" ColumnName="prenomCli" />
+          <ScalarProperty Name="telephone" ColumnName="telephone" />
+          <ScalarProperty Name="email" ColumnName="email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Emplacement">
+      <EntityTypeMapping TypeName="LocamerGRuModel.Emplacement">
+        <MappingFragment StoreEntitySet="Emplacement">
+          <ScalarProperty Name="codeEmplacement" ColumnName="codeEmplacement" />
+          <ScalarProperty Name="capaciteMob" ColumnName="capaciteMob" />
+          <ScalarProperty Name="terrasseCouv" ColumnName="terrasseCouv" />
+          <ScalarProperty Name="idTarif" ColumnName="idTarif" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmplacementSejour">
+      <EntityTypeMapping TypeName="LocamerGRuModel.EmplacementSejour">
+        <MappingFragment StoreEntitySet="EmplacementSejour">
+          <ScalarProperty Name="idES" ColumnName="idES" />
+          <ScalarProperty Name="codeEmplacement" ColumnName="codeEmplacement" />
+          <ScalarProperty Name="idSejour" ColumnName="idSejour" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="locationOption">
+      <EntityTypeMapping TypeName="LocamerGRuModel.locationOption">
+        <MappingFragment StoreEntitySet="locationOption">
+          <ScalarProperty Name="idLoc" ColumnName="idLoc" />
+          <ScalarProperty Name="quantitee" ColumnName="quantitee" />
+          <ScalarProperty Name="duree" ColumnName="duree" />
+          <ScalarProperty Name="idOption" ColumnName="idOption" />
+          <ScalarProperty Name="idSejour" ColumnName="idSejour" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Option">
+      <EntityTypeMapping TypeName="LocamerGRuModel.Option">
+        <MappingFragment StoreEntitySet="Option">
+          <ScalarProperty Name="idOption" ColumnName="idOption" />
+          <ScalarProperty Name="libelle" ColumnName="libelle" />
+          <ScalarProperty Name="prixJour" ColumnName="prixJour" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sejour">
+      <EntityTypeMapping TypeName="LocamerGRuModel.Sejour">
+        <MappingFragment StoreEntitySet="Sejour">
+          <ScalarProperty Name="idSejour" ColumnName="idSejour" />
+          <ScalarProperty Name="dateDebut" ColumnName="dateDebut" />
+          <ScalarProperty Name="dateFin" ColumnName="dateFin" />
+          <ScalarProperty Name="codeEmplacement" ColumnName="codeEmplacement" />
+          <ScalarProperty Name="idCli" ColumnName="idCli" />
+          <ScalarProperty Name="idReduc" ColumnName="idReduc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tarif">
+      <EntityTypeMapping TypeName="LocamerGRuModel.Tarif">
+        <MappingFragment StoreEntitySet="Tarif">
+          <ScalarProperty Name="idTarif" ColumnName="idTarif" />
+          <ScalarProperty Name="libelle" ColumnName="libelle" />
+          <ScalarProperty Name="prix" ColumnName="prix" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Type">
+      <EntityTypeMapping TypeName="LocamerGRuModel.Type">
+        <MappingFragment StoreEntitySet="Type">
+          <ScalarProperty Name="idReduc" ColumnName="idReduc" />
+          <ScalarProperty Name="libelle" ColumnName="libelle" />
+          <ScalarProperty Name="coefReduc" ColumnName="coefReduc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
