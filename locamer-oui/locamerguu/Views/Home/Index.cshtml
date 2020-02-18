@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="row">
+    <div class="col-md-3">
+        <h2>Les Clients</h2>
+        <p>
+            Ce module vous permet de créer, modifier et supprimer des clients du camping.
+        </p>
+        <p>@Html.ActionLink("Liste des clients", "Index", "clients", null, new { @class = "btn btn-primary btn-large" })</p>
+    </div>
+    <div class="col-md-3">
+        <h2>Les emplacements</h2>
+        <p>Ce module vous permet de créer, modifier et supprimer des emplacements du camping.</p>
+        <p>@Html.ActionLink("Liste des emplacements", "Index", "emplacements", null, new { @class = "btn btn-primary btn-large" })</p>
+    </div>
+    <div class="col-md-3">
+        <h2>Les séjours</h2>
+        <p>Ce module vous permet de créer, modifier et supprimer les séjours du camping.</p><br />
+        <p>Il permet également de générer le coût total d'un séjours en fonctions des emplacements et des options du client</p>
+        <p>@Html.ActionLink("Liste des séjours", "Index", "sejours", null, new { @class = "btn btn-primary btn-large" })</p>
+    </div>
+    <div class="col-md-3">
+        <h2>Les options</h2>
+        <p>Ce module vous permet de créer, modifier et supprimer des options disponible à la location.</p>
+        <p>@Html.ActionLink("Liste des options", "Index", "options", null, new { @class = "btn btn-primary btn-large" })</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <img src=@Url.Content(ViewBag.ImagePath1) Width="500">
+    </div>
+    <div class="col-md-6">
+        <img src="~/Content/Images/mobile_home_2.jpg" Width="500">
+    </div>
+</div>
