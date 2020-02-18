@@ -342,7 +342,6 @@
     <Content Include="Views\Types\Index.cshtml" />
     <Content Include="Views\Emplacements\Create.cshtml" />
     <Content Include="Views\Emplacements\Delete.cshtml" />
-    <Content Include="Views\Emplacements\Details.cshtml" />
     <Content Include="Views\Emplacements\Edit.cshtml" />
     <Content Include="Views\Emplacements\Index.cshtml" />
     <Content Include="Views\Sejours\Create.cshtml" />
@@ -352,7 +351,6 @@
     <Content Include="Views\Sejours\Index.cshtml" />
     <Content Include="Views\Options\Create.cshtml" />
     <Content Include="Views\Options\Delete.cshtml" />
-    <Content Include="Views\Options\Details.cshtml" />
     <Content Include="Views\Options\Edit.cshtml" />
     <Content Include="Views\Options\Index.cshtml" />
   </ItemGroup>
