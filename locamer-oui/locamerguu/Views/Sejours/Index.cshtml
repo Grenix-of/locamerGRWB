@@ -18,15 +18,11 @@
             @Html.DisplayNameFor(model => model.dateFin)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.codeEmplacement)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Client.nomCli)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Type.libelle)
         </th>
-        <th></th>
     </tr>
 
 @foreach (var item in Model) {
@@ -36,9 +32,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.dateFin)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.codeEmplacement)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Client.nomCli)

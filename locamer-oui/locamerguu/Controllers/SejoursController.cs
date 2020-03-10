@@ -132,5 +132,11 @@ namespace locamerguu.Controllers
             }
             base.Dispose(disposing);
         }
+        
+        private int CalculerDuree()
+        {
+            TimeSpan span = dateFin.Subtract(dateDebut);
+            return (int)span.TotalDays;
+        }
     }
 }
